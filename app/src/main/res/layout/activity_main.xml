@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="💧 喝水提醒"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginTop="48dp" />
+
+    <TextView
+        android:id="@+id/countLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/today_count"
+        android:textSize="18sp"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:id="@+id/countText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="72sp"
+        android:textStyle="bold"
+        android:textColor="@color/blue_water" />
+
+    <TextView
+        android:id="@+id/cupsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cups"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/drinkButton"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:text="@string/drink_water"
+        android:textSize="18sp"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:id="@+id/nextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next_reminder"
+        android:textSize="16sp"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:id="@+id/nextTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--:--"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/settings"
+        android:layout_marginTop="24dp"
+        style="?android:attr/borderlessButtonStyle" />
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+# Gradle
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Build outputs
+*/build/
+*/Build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# IntelliJ
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# Android Studio
+captures/
+.externalNativeBuild
+.cxx/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

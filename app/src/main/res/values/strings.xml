@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">喝水提醒</string>
+    <string name="drink_water">喝一杯水</string>
+    <string name="today_count">今天已喝</string>
+    <string name="cups">杯</string>
+    <string name="next_reminder">下次提醒</string>
+    <string name="settings">设置</string>
+    <string name="reminder_interval">提醒间隔（分钟）</string>
+    <string name="save">保存</string>
+    <string name="channel_name">喝水提醒</string>
+    <string name="channel_description">定时提醒你喝水</string>
+    <string name="notification_title">该喝水啦！💧</string>
+    <string name="notification_text">保持身体水分充足，点击记录喝一杯</string>
+</resources>
