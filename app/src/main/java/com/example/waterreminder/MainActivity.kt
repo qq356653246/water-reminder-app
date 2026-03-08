@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         countText = findViewById(R.id.countText)
         nextTimeText = findViewById(R.id.nextTimeText)
         drinkButton = findViewById(R.id.drinkButton)
+        undoButton = findViewById(R.id.undoButton)
         settingsButton = findViewById(R.id.settingsButton)
 
         // 创建通知渠道
