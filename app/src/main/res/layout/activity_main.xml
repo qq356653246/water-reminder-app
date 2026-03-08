@@ -40,13 +40,28 @@
         android:text="@string/cups"
         android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/drinkButton"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:text="@string/drink_water"
-        android:textSize="18sp"
-        android:layout_marginTop="32dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp">
+
+        <Button
+            android:id="@+id/drinkButton"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="@string/drink_water"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/undoButton"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:text="↩️ 撤销"
+            android:textSize="14sp"
+            android:layout_marginStart="16dp"
+            style="?android:attr/borderlessButtonStyle" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/nextLabel"
@@ -54,7 +69,7 @@
         android:layout_height="wrap_content"
         android:text="@string/next_reminder"
         android:textSize="16sp"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="24dp" />
 
     <TextView
         android:id="@+id/nextTimeText"

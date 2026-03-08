@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var countText: TextView
     private lateinit var nextTimeText: TextView
     private lateinit var drinkButton: Button
+    private lateinit var undoButton: Button
     private lateinit var settingsButton: Button
     
     private lateinit var prefs: SharedPreferences
@@ -71,6 +72,10 @@ class MainActivity : AppCompatActivity() {
         // 按钮点击事件
         drinkButton.setOnClickListener {
             drinkWater()
+        }
+
+        undoButton.setOnClickListener {
+            undoDrinkWater()
         }
 
         settingsButton.setOnClickListener {
@@ -143,6 +148,22 @@ class MainActivity : AppCompatActivity() {
         // 重新设置提醒（从喝水时间重新计时）
         scheduleReminder()
         updateUI()
+    }
+
+    private fun undoDrinkWater() {
+        val currentCount = prefs.getInt(KEY_COUNT, 0)
+        
+        // 边界校验：不能小于 0
+        if (currentCount <= 0) {
+            Toast.makeText(this, "已经是 0 杯了，无法撤销～", Toast.LENGTH_SHORT).show()
+            return
+        }
+        
+        val newCount = currentCount - 1
+        prefs.edit().putInt(KEY_COUNT, newCount).apply()
+        
+        countText.text = newCount.toString()
+        Toast.makeText(this, "已撤销一杯，当前 ${newCount} 杯", Toast.LENGTH_SHORT).show()
     }
 
     private fun scheduleReminder() {
