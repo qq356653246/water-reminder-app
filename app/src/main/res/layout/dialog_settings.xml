@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⚙️ 设置"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary" />
+
+    <!-- 每日目标杯数 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="每日目标（杯）"
+        android:textSize="15sp"
+        android:textColor="@color/text_secondary"
+        android:layout_marginTop="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btnDecreaseGoal"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="−"
+            android:textSize="20sp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        <TextView
+            android:id="@+id/txtGoalCups"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="8"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/btnIncreaseGoal"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="+"
+            android:textSize="20sp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+    </LinearLayout>
+
+    <!-- 提醒间隔 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提醒间隔"
+        android:textSize="15sp"
+        android:textColor="@color/text_secondary"
+        android:layout_marginTop="20dp" />
+
+    <Spinner
+        android:id="@+id/spinnerInterval"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/spinner_background"
+        android:padding="12dp" />
+
+    <!-- 喝水时间段 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="喝水时间段（在此时间段内提醒）"
+        android:textSize="15sp"
+        android:textColor="@color/text_secondary"
+        android:layout_marginTop="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="从"
+            android:textSize="15sp"
+            android:textColor="@color/text_secondary" />
+
+        <Button
+            android:id="@+id/btnStartTime"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="08:00"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="到"
+            android:textSize="15sp"
+            android:textColor="@color/text_secondary" />
+
+        <Button
+            android:id="@+id/btnEndTime"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="22:00"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+    </LinearLayout>
+
+    <!-- 保存按钮 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSaveSettings"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="24dp"
+        android:text="💾 保存设置"
+        android:textSize="16sp"
+        app:cornerRadius="12dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+</LinearLayout>

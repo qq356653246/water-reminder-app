@@ -12,4 +12,15 @@
     <string name="channel_description">定时提醒你喝水</string>
     <string name="notification_title">该喝水啦！💧</string>
     <string name="notification_text">保持身体水分充足，点击记录喝一杯</string>
+    
+    <!-- 新增字符串 -->
+    <string name="daily_goal">每日目标</string>
+    <string name="goal_cups">目标杯数</string>
+    <string name="time_range">喝水时间段</string>
+    <string name="start_time">开始时间</string>
+    <string name="end_time">结束时间</string>
+    <string name="save_settings">保存设置</string>
+    <string name="undo">撤销</string>
+    <string name="water_statistics">喝水统计</string>
+    <string name="last_7_days">最近 7 天</string>
 </resources>

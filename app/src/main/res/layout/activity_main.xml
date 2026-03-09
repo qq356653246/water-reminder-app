@@ -1,90 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
+<androidx.core.widget.NestedScrollView 
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center_horizontal">
+    android:fillViewport="true"
+    android:background="@color/background_light">
 
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
+    <LinearLayout 
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="💧 喝水提醒"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:layout_marginTop="48dp" />
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <TextView
-        android:id="@+id/countLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/today_count"
-        android:textSize="18sp"
-        android:layout_marginTop="32dp" />
+        <!-- 标题区域 -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💧 喝水提醒"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal" />
 
-    <TextView
-        android:id="@+id/countText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="72sp"
-        android:textStyle="bold"
-        android:textColor="@color/blue_water" />
+        <!-- 今日喝水卡片 -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/card_white">
 
-    <TextView
-        android:id="@+id/cupsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cups"
-        android:textSize="24sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center_horizontal">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="32dp">
+                <TextView
+                    android:id="@+id/countLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="今日已喝"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_secondary" />
 
-        <Button
-            android:id="@+id/drinkButton"
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:text="@string/drink_water"
-            android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/countText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="64sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_water"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light" />
 
-        <Button
-            android:id="@+id/undoButton"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:text="↩️ 撤销"
-            android:textSize="14sp"
-            android:layout_marginStart="16dp"
-            style="?android:attr/borderlessButtonStyle" />
+                <TextView
+                    android:id="@+id/cupsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="杯"
+                    android:textSize="18sp"
+                    android:textColor="@color/text_secondary" />
+
+                <!-- 进度条 -->
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="16dp"
+                    android:max="8"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/progress_bar_bg" />
+
+                <TextView
+                    android:id="@+id/goalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="目标：8 杯"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="8dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 喝水按钮区域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:gravity="center">
+
+            <!-- 喝水按钮 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/drinkButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:text="🥤 喝一杯"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                app:cornerRadius="28dp"
+                app:backgroundTint="@color/blue_water"
+                android:elevation="4dp" />
+
+            <!-- 撤销按钮 - 美化版本 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/undoButton"
+                android:layout_width="64dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="12dp"
+                android:text="↩️"
+                android:textSize="20sp"
+                android:textColor="@color/text_primary"
+                app:cornerRadius="28dp"
+                app:backgroundTint="@color/undo_button_bg"
+                app:strokeColor="@color/undo_button_stroke"
+                app:strokeWidth="1dp"
+                android:elevation="2dp" />
+
+        </LinearLayout>
+
+        <!-- 下次提醒卡片 -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/card_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="⏰ 下次提醒"
+                    android:textSize="15sp"
+                    android:textColor="@color/text_secondary" />
+
+                <TextView
+                    android:id="@+id/nextTimeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--:--"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 喝水统计图表卡片 -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/card_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📊 喝水统计"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="8dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 设置按钮 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/settingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="⚙️ 设置"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            app:cornerRadius="12dp"
+            app:backgroundTint="@color/settings_button_bg"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/nextLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next_reminder"
-        android:textSize="16sp"
-        android:layout_marginTop="24dp" />
-
-    <TextView
-        android:id="@+id/nextTimeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="--:--"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="@string/settings"
-        android:layout_marginTop="24dp"
-        style="?android:attr/borderlessButtonStyle" />
-
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

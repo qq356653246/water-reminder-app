@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.app.AlarmManager
 import android.app.PendingIntent
+import com.example.waterreminder.data.WaterDataManager
 
 class BootReceiver : BroadcastReceiver() {
     
@@ -16,8 +17,13 @@ class BootReceiver : BroadcastReceiver() {
     }
 
     private fun scheduleReminderAfterBoot(context: Context) {
-        val prefs = context.getSharedPreferences(MainActivity.PREFS_NAME, Context.MODE_PRIVATE)
-        val intervalMinutes = prefs.getInt(MainActivity.KEY_INTERVAL, 60)
+        // 使用 WaterDataManager 获取设置
+        val dataManager = WaterDataManager(context)
+        val goal = dataManager.getDailyGoal()
+        
+        // 获取提醒间隔（从旧 SharedPreferences 读取兼容）
+        val prefs = context.getSharedPreferences("water_prefs", Context.MODE_PRIVATE)
+        val intervalMinutes = prefs.getInt("interval_minutes", 60)
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, WaterReminderReceiver::class.java).apply {
