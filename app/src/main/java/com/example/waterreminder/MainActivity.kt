@@ -310,6 +310,11 @@ class MainActivity : AppCompatActivity() {
             .setView(dialogView)
         
         val dialog = builder.create()
+        dialog.show()
+        dialog.window?.setLayout(
+            android.view.ViewGroup.LayoutParams.MATCH_PARENT,
+            android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+        )
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         
         // 获取视图组件

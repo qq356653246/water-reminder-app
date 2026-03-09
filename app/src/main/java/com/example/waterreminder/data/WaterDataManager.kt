@@ -65,7 +65,18 @@ class WaterDataManager(context: Context) {
         
         val newCount = count - 1
         prefs.edit().putInt(KEY_TODAY_COUNT, newCount).apply()
+        
+        // 同时更新历史记录
+        updateHistory(newCount)
+        
         return newCount
+    }
+    
+    /**
+     * 更新历史记录（用于撤销操作）
+     */
+    private fun updateHistory(count: Int) {
+        saveToHistory(count)
     }
     
     /**
