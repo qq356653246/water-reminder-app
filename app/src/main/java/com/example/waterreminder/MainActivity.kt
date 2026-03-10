@@ -6,6 +6,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.TimePickerDialog
+import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -188,6 +189,9 @@ class MainActivity : AppCompatActivity() {
         countText.text = count.toString()
         progressBar.progress = count.coerceAtMost(dailyGoal)
         
+        // 更新桌面小组件
+        updateWidget()
+        
         // 动画反馈
         countText.animate()
             .scaleX(1.2f)
@@ -228,6 +232,9 @@ class MainActivity : AppCompatActivity() {
         
         countText.text = newCount.toString()
         progressBar.progress = newCount.coerceAtMost(dailyGoal)
+        
+        // 更新桌面小组件
+        updateWidget()
         
         Toast.makeText(this, "已撤销一杯，当前 $newCount 杯", Toast.LENGTH_SHORT).show()
         
@@ -512,6 +519,19 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         updateUI()
+    }
+
+    // 更新桌面小组件
+    private fun updateWidget() {
+        val intent = Intent(this, WaterWidgetProvider::class.java).apply {
+            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+        }
+        val ids = AppWidgetManager.getInstance(this)
+            ?.getAppWidgetIds(android.content.ComponentName(this, WaterWidgetProvider::class.java))
+        if (ids != null && ids.isNotEmpty()) {
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            sendBroadcast(intent)
+        }
     }
 
     // 发送通知
