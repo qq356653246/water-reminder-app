@@ -12,10 +12,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="💧 喝水鸭"
+        android:text="🦆 喝水鸭"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
+        android:textColor="#F57F17"
         android:layout_gravity="center_horizontal" />
 
     <!-- Count Display -->
@@ -33,7 +33,7 @@
             android:text="0"
             android:textSize="36sp"
             android:textStyle="bold"
-            android:textColor="#4FC3F7" />
+            android:textColor="#F57F17" />
 
         <TextView
             android:id="@+id/widget_goal"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:text="/ 8"
             android:textSize="20sp"
-            android:textColor="#FFFFFF"
+            android:textColor="#F57F17"
             android:layout_marginStart="4dp" />
     </LinearLayout>
 
