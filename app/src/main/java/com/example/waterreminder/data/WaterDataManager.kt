@@ -21,6 +21,8 @@ class WaterDataManager(context: Context) {
         const val KEY_DAILY_GOAL = "daily_goal"
         const val KEY_TODAY_COUNT = "today_count"
         const val KEY_LAST_DATE = "last_date"
+        const val KEY_CUP_SIZE = "cup_size"
+        const val DEFAULT_CUP_SIZE = 250
     }
     
     /**
@@ -140,6 +142,20 @@ class WaterDataManager(context: Context) {
     fun saveDailyGoal(goal: DailyGoal) {
         val json = gson.toJson(goal)
         prefs.edit().putString(KEY_DAILY_GOAL, json).apply()
+    }
+    
+    /**
+     * 获取杯子容量（ml）
+     */
+    fun getCupSize(): Int {
+        return prefs.getInt(KEY_CUP_SIZE, DEFAULT_CUP_SIZE)
+    }
+    
+    /**
+     * 保存杯子容量
+     */
+    fun setCupSize(sizeMl: Int) {
+        prefs.edit().putInt(KEY_CUP_SIZE, sizeMl).apply()
     }
     
     /**

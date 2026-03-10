@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
     
     // 设置相关
     private var dailyGoal = 8
+    private var cupSize = 250
     private var reminderIntervalMinutes = 60
     private var startTime = "08:00"
     private var endTime = "22:00"
@@ -139,6 +140,9 @@ class MainActivity : AppCompatActivity() {
         startTime = goal.startTime
         endTime = goal.endTime
         
+        // 加载杯子容量
+        cupSize = dataManager.getCupSize()
+        
         // 加载提醒间隔（从 SharedPreferences）
         val prefs = getSharedPreferences("water_prefs", Context.MODE_PRIVATE)
         reminderIntervalMinutes = prefs.getInt("interval_minutes", 60)
@@ -150,7 +154,8 @@ class MainActivity : AppCompatActivity() {
         
         // 更新进度条
         progressBar.progress = count.coerceAtMost(dailyGoal)
-        goalText.text = "目标：$dailyGoal 杯"
+        val totalMl = count * cupSize
+        goalText.text = "目标：$dailyGoal 杯 ($totalMl ml)"
         
         // 计算下次提醒时间
         val calendar = Calendar.getInstance().apply {
@@ -321,6 +326,9 @@ class MainActivity : AppCompatActivity() {
         val txtGoalCups = dialogView.findViewById<TextView>(R.id.txtGoalCups)
         val btnIncreaseGoal = dialogView.findViewById<Button>(R.id.btnIncreaseGoal)
         val btnDecreaseGoal = dialogView.findViewById<Button>(R.id.btnDecreaseGoal)
+        val txtCupSize = dialogView.findViewById<TextView>(R.id.txtCupSize)
+        val btnIncreaseCupSize = dialogView.findViewById<Button>(R.id.btnIncreaseCupSize)
+        val btnDecreaseCupSize = dialogView.findViewById<Button>(R.id.btnDecreaseCupSize)
         val spinnerInterval = dialogView.findViewById<Spinner>(R.id.spinnerInterval)
         val btnStartTime = dialogView.findViewById<Button>(R.id.btnStartTime)
         val btnEndTime = dialogView.findViewById<Button>(R.id.btnEndTime)
@@ -328,6 +336,7 @@ class MainActivity : AppCompatActivity() {
         
         // 初始化设置值
         txtGoalCups.text = dailyGoal.toString()
+        txtCupSize.text = cupSize.toString()
         btnStartTime.text = startTime
         btnEndTime.text = endTime
         
@@ -354,6 +363,22 @@ class MainActivity : AppCompatActivity() {
             if (dailyGoal > 1) {
                 dailyGoal--
                 txtGoalCups.text = dailyGoal.toString()
+            }
+        }
+        
+        // 增加杯子容量
+        btnIncreaseCupSize.setOnClickListener {
+            if (cupSize < 1000) {
+                cupSize += 50
+                txtCupSize.text = cupSize.toString()
+            }
+        }
+        
+        // 减少杯子容量
+        btnDecreaseCupSize.setOnClickListener {
+            if (cupSize > 50) {
+                cupSize -= 50
+                txtCupSize.text = cupSize.toString()
             }
         }
         
@@ -387,6 +412,9 @@ class MainActivity : AppCompatActivity() {
             val goal = DailyGoal(dailyGoal, startTime, endTime)
             dataManager.saveDailyGoal(goal)
             
+            // 保存杯子容量
+            dataManager.setCupSize(cupSize)
+            
             // 保存提醒间隔
             val selectedInterval = intervalValues[spinnerInterval.selectedItemPosition]
             val prefs = getSharedPreferences("water_prefs", Context.MODE_PRIVATE)
@@ -397,7 +425,7 @@ class MainActivity : AppCompatActivity() {
             scheduleReminder()
             updateUI()
             
-            Toast.makeText(this, "设置已保存！", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "设置已保存！💧", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
         

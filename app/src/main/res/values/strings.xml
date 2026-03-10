@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">喝水提醒</string>
+    <string name="app_name">喝水鸭</string>
     <string name="drink_water">喝一杯水</string>
     <string name="today_count">今天已喝</string>
     <string name="cups">杯</string>
@@ -18,6 +18,10 @@
     <string name="goal_cups">目标杯数</string>
     <string name="time_range">喝水时间段</string>
     <string name="start_time">开始时间</string>
+    <string name="cup_size">杯子容量</string>
+    <string name="cup_size_ml">杯子容量（ml）</string>
+    <string name="common_sizes">常用容量：150ml(小杯), 200ml(中杯), 250ml(标准), 300ml(大杯), 500ml(水瓶)</string>
+    <string name="total_intake">总摄入量</string>
     <string name="end_time">结束时间</string>
     <string name="save_settings">保存设置</string>
     <string name="undo">撤销</string>
